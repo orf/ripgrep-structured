@@ -1,6 +1,6 @@
 [package]
 name = "ripgrep-structured"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "Run ripgrep over structured data"
 license = "MIT"
