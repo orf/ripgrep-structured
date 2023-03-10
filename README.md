@@ -7,6 +7,13 @@ This tool lets you filter structured data using ripgrep. Supported formats:
 * tar - outputs a new tar file with only files that match a pattern
 * length-prefixed text - given an input of `{key}\t{length}\t{text}`, output `key`s when `text` matches a pattern
 
+### Why?
+
+Ripgrep is powerful, but sometimes you need to use the power of ripgrep over only a certain field, column or entry 
+within a stream. Imagine you are downloading a very large tar file from the internet but only need files that match 
+a specific pattern - you can pipe the download into `srg`, filter out files you don't want and then pipe the contents 
+into `tar` for extraction or other processing.
+
 ### Examples
 
 ```shell
