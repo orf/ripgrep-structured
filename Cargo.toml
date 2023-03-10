@@ -6,4 +6,17 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+anyhow = "1.0.69"
 clap = { version = "4.1.8", features = ["derive"] }
+csv = "1.2.1"
+grep = "0.2.11"
+serde_json = { version = "1.0.94", features = ["preserve_order", "raw_value"] }
+tar = { version = "0.4.38", default-features = false }
+thiserror = "1.0.39"
+
+[[bin]]
+name = "srg"
+path = "src/main.rs"
+
+[profile.release]
+lto = true

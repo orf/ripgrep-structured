@@ -1,2 +1,7 @@
 /target
 .idea/
+
+test_data/*.json
+test_data/*.csv
+test_data/*.txt
+test_data/*.tar
