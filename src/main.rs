@@ -26,6 +26,8 @@ enum Format {
     Csv {
         #[arg()]
         column: usize,
+        #[arg(default_value=",", short, long)]
+        delimiter: char,
     },
     Prefixed,
     Tar,
@@ -48,7 +50,7 @@ fn main() -> anyhow::Result<()> {
 
     let format: Box<dyn FormatMatcher> = match args.format {
         Format::Json { key } => Box::new(JSONFormat::new(key)),
-        Format::Csv { column } => Box::new(CSVFormat::new(column)),
+        Format::Csv { column, delimiter } => Box::new(CSVFormat::new(column, delimiter)),
         Format::Prefixed => Box::new(PrefixedFormat::new()),
         Format::Tar => Box::new(TarFormat::new()),
     };

@@ -7,11 +7,12 @@ use std::io::{BufReader, BufWriter, StdinLock};
 
 pub struct CSVFormat {
     index: usize,
+    delimiter: char
 }
 
 impl CSVFormat {
-    pub fn new(index: usize) -> Self {
-        Self { index }
+    pub fn new(index: usize, delimiter: char) -> Self {
+        Self { index, delimiter }
     }
 }
 
@@ -23,7 +24,7 @@ impl FormatMatcher for CSVFormat {
         mut searcher: Searcher,
         matcher: RegexMatcher,
     ) {
-        let mut reader = csv::ReaderBuilder::new().from_reader(reader);
+        let mut reader = csv::ReaderBuilder::new().delimiter(self.delimiter as u8).from_reader(reader);
         // let mut writer = csv::Writer::from_writer(writer);
         let mut writer = csv::WriterBuilder::new().from_writer(writer);
         for record in reader.byte_records().flatten() {
